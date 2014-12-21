@@ -50,11 +50,24 @@
  * Returning   : none
  **********************************************************************/
 static void local_nanosleep(long sec, long nano) {
-  struct timespec delay;
-  /* Set delay settings for nanosleep */
+  int ret = -1, i = 0;
+  struct timespec delay, rem;
+
   delay.tv_sec  = sec;
   delay.tv_nsec = nano;
-  (void) nanosleep(&delay, NULL);
+
+  do {
+    if (i >= 300) {
+      printf("fatal sleep error, missing: %d,%d \n", rem.tv_sec, rem.tv_nsec);
+      return;
+    }
+    ret =  nanosleep(&delay, &rem);
+
+    delay.tv_sec  = rem.tv_sec;
+    delay.tv_nsec = rem.tv_nsec;
+
+    i++;
+  } while (ret == -1);
 }
 
 
