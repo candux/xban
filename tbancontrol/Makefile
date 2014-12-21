@@ -31,8 +31,6 @@
 # Build commands
 ################################################################################
 SHELL	= /bin/sh
-LINT    = lint
-
 
 ################################################################################
 # Compilation and linker flags
@@ -41,11 +39,6 @@ LINT    = lint
 ################################################################################
 CFLAGS = -Wall -pedantic -ggdb -D LINUX -I../libtban 
 LFLAGS = -D LINUX -I../libtban -L../libtban -lc -lrt -ggdb -ltban -lncurses -lform
-
-ifeq ($(MACHTYPE),sparc)
-  CFLAGS += -D DRYRUN
-  LFLAGS = -D LINUX -D DRYRUN -I../libtban -L../libtban -lc -lrt -ggdb -ltban -lcurses -lform
-endif
 
 ################################################################################
 # What should we remove when cleaning out the tbancontrol program?
@@ -64,9 +57,6 @@ monitor.o: monitor.c
 
 ll.o: ll.c ll.h
 	$(CC) $(CFLAGS) -c ll.c
-
-lint:
-	$(LINT) -# -I ../libtban -L../libtban -ltban tbancontrol.c
 
 clean:
 	/bin/rm -f $(CLEAN)
