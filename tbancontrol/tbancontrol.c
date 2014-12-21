@@ -1238,16 +1238,12 @@ static int cmdPrintRespCurve(struct TBan* tban, unsigned char ch) {
  * Returning   : 
  **********************************************************************/
 static int openDevice(struct TBan* tban) {
-#ifndef LINUX
-  tban->opened=1;
-#else
   int result;
   /* Open the device  */
   result = tban_open(tban);
   if(result != TBAN_OK) {
     return result;
   }
-#endif
   return TBAN_OK;
 }
 
