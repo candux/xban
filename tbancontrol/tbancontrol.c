@@ -170,7 +170,6 @@
 #include "tban.h"
 #include "mini_ng.h"
 #include "big_ng.h"
-#include "monitor.h"
 
 
 #define BIGNG_DEVICE_NOT_FOUND  -99
@@ -2289,16 +2288,6 @@ static void parseArguments(int argc, char* argv[]) {
         }
       }
 
-      /***************************************************************
-       * Monitor mode
-       ***************************************************************/
-      /* mon : */
-/*       if(strcmp(argv[i], "mon")==0) { */
-/*         VERBOSE(printf("* mon\n")); */
-/*         PRETEND_RUN(tbancontrolMonitor(tban)); */
-/*       } */
-
-    
       /***************************************************************
        * Command execution checks. Make sure that we have actually
        * executed a command and that it succeeded, otherwise lets tell the

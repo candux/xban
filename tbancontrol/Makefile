@@ -50,10 +50,7 @@ CLEAN = *.o tbancontrol
 # Rules
 ################################################################################
 tbancontrol: tbancontrol.c monitor.o ll.o ../libtban/libtban.a
-	$(CC) -o tbancontrol monitor.o ll.o tbancontrol.c $(LFLAGS)
-
-monitor.o: monitor.c
-	$(CC) $(CFLAGS) -c monitor.c
+	$(CC) -o tbancontrol ll.o tbancontrol.c $(LFLAGS)
 
 ll.o: ll.c ll.h
 	$(CC) $(CFLAGS) -c ll.c
