@@ -809,7 +809,7 @@ void tban_updateProgress(struct TBan* tban, int cur, int max) {
  *               TBAN_NOT_OPENED
  **********************************************************************/
 int tban_sendCommand(struct TBan* tban, unsigned char* sndBuf, int cmdLen) {
-  int result;
+  int result, i;
 
   /* Sanity check */
   if(tban == NULL)
@@ -818,6 +818,14 @@ int tban_sendCommand(struct TBan* tban, unsigned char* sndBuf, int cmdLen) {
     return TBAN_BUF_NULL_PTR;
   if(tban->opened == 0)
     return TBAN_NOT_OPENED;
+
+  DEBUG(
+    printf("tban_sendCommand: 0x");
+    for (i = 0; i < cmdLen; i++) {
+      printf("%02x", sndBuf[i]);
+    }
+    printf("\n");
+  )
 
   /* Write data to port */
   result = write(tban->port, sndBuf, cmdLen);
