@@ -38,7 +38,7 @@ SHELL	= /bin/sh
 # remove some functions.
 ################################################################################
 CFLAGS = -Wall -pedantic -ggdb -D LINUX -I../libtban 
-LFLAGS = -D LINUX -I../libtban -L../libtban -lc -lrt -ggdb -ltban -lncurses -lform
+LFLAGS = -D LINUX -I../libtban -L../libtban -ltban
 
 ################################################################################
 # What should we remove when cleaning out the tbancontrol program?
@@ -49,7 +49,7 @@ CLEAN = *.o tbancontrol
 ################################################################################
 # Rules
 ################################################################################
-tbancontrol: tbancontrol.c monitor.o ll.o ../libtban/libtban.a
+tbancontrol: tbancontrol.c ll.o ../libtban/libtban.a
 	$(CC) -o tbancontrol ll.o tbancontrol.c $(LFLAGS)
 
 ll.o: ll.c ll.h
