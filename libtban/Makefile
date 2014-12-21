@@ -1,6 +1,5 @@
 # Commands
 SHELL	 = /bin/sh
-CC	 = gcc
 LINT     = lint
 SRC      = tban.c mini_ng.c parser.c big_ng.c
 OBJ      = $(SRC:.c=.o)
