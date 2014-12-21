@@ -967,6 +967,7 @@ int tban_flushData(struct TBan* tban) {
    * user */
   if(!checktimeout(starttime,tban->timeout)) {
     printf("Nothing to flush \n");
+    free(buf);
     return TBAN_OK;
   }
 
