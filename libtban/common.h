@@ -50,7 +50,7 @@
  * Returning   : none
  **********************************************************************/
 static void local_nanosleep(long sec, long nano) {
-  struct timespec delay;  
+  struct timespec delay;
   /* Set delay settings for nanosleep */
   delay.tv_sec  = sec;
   delay.tv_nsec = nano;
