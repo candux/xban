@@ -54,7 +54,7 @@ static int tban_dataAvailable = TBAN_FALSE;
 
 /* If debug selected enable the code within the brackets, otherwise just
  * discard it. */
-#ifdef DEBUG_ENABLED
+#ifndef NDEBUG
   #define DEBUG(s) s
 #else
   #define DEBUG(s)
